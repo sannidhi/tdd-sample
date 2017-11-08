@@ -1,6 +1,5 @@
 package tdd.boot.sample;
 
-import org.assertj.core.util.Lists;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,11 +7,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import tdd.boot.sample.Car;
-import tdd.boot.sample.CarController;
-import tdd.boot.sample.CarService;
-
-import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.BDDMockito.given;
@@ -53,8 +47,7 @@ public class CarControllerTest {
     public void getCar_returnsCarWithNameAndDescription() throws Exception {
         given(carService.getCar("prius")).willReturn(PRIUS);
 
-        mockMvc.perform(get("/car/{name}")
-                .param("name", "prius"))
+        mockMvc.perform(get("/car/{name}", "prius"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("name").value(PRIUS.getName()))
                 .andExpect(jsonPath("description").value(PRIUS.getDescription()));
