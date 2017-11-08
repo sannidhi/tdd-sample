@@ -1,5 +1,6 @@
 package tdd.boot.sample;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,7 @@ public class CarService {
         this.carRepository = carRepository;
     }
 
+    @Cacheable("cars")
     public List<Car> getCars() {
         return carRepository.findAll();
     }
