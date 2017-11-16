@@ -17,19 +17,13 @@ import static tdd.boot.sample.CarFactory.PRIUS;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureTestDatabase
 public class IntegrationTest {
 
     @Autowired
     private TestRestTemplate testRestTemplate;
 
-    @MockBean
-    private CarRepository carRepository;
-
 	@Test
 	public void getCar() {
-	    given(carRepository.findByName("prius")).willReturn(PRIUS);
-
         ResponseEntity<Car> response = this.testRestTemplate.getForEntity("/car/prius", Car.class);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);

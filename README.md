@@ -17,6 +17,6 @@ Create table cars (
 ```
 
 ```
-insert into car("model-x","full-sized, all-electric");
 insert into car values(1, "model-x","full-sized, all-electric");
+insert into car values(2, "prius","hybrid car");
 ```
