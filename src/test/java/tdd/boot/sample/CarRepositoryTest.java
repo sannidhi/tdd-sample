@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
+import static tdd.boot.sample.CarFactory.MODEL_X;
 import static tdd.boot.sample.CarFactory.PRIUS;
 import static tdd.boot.sample.CarFactory.listOfCars;
 
@@ -23,7 +24,8 @@ public class CarRepositoryTest {
 
     @Before
     public void setUp() throws Exception {
-        carRepository.save(listOfCars());
+        carRepository.save(PRIUS);
+        carRepository.save(MODEL_X);
     }
 
     @After

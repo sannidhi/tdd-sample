@@ -5,7 +5,7 @@ import org.assertj.core.util.Lists;
 import java.util.List;
 
 class CarFactory {
-    private static final Car MODEL_X = new Car(1, "model-x", "full-sized, all-electric");
+    static final Car MODEL_X = new Car(1, "model-x", "full-sized, all-electric");
     static final Car PRIUS = new Car(2, "prius", "hybrid car");
 
 
